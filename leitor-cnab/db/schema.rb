@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_21_023907) do
+ActiveRecord::Schema.define(version: 2021_12_21_024337) do
 
   create_table "stores", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -28,4 +28,19 @@ ActiveRecord::Schema.define(version: 2021_12_21_023907) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "transactions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "transaction_type_id", null: false
+    t.date "date"
+    t.decimal "value", precision: 10
+    t.string "card"
+    t.time "hour"
+    t.bigint "store_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_transactions_on_store_id"
+    t.index ["transaction_type_id"], name: "index_transactions_on_transaction_type_id"
+  end
+
+  add_foreign_key "transactions", "stores"
+  add_foreign_key "transactions", "transaction_types"
 end

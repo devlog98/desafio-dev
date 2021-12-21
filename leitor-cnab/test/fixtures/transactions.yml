@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transaction_type: one
+  date: 2021-12-20
+  value: 9.99
+  card: MyString
+  hour: 2021-12-20 23:43:37
+  store: one
+
+two:
+  transaction_type: two
+  date: 2021-12-20
+  value: 9.99
+  card: MyString
+  hour: 2021-12-20 23:43:37
+  store: two
