@@ -21,17 +21,23 @@ class TransactionsController < ApplicationController
 
   # POST /transactions or /transactions.json
   def create
-    @transaction = Transaction.new(transaction_params)
+    transactions = Transaction.parse_parameters(transaction_params)
 
-    respond_to do |format|
-      if @transaction.save
-        format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully created." }
-        format.json { render :show, status: :created, location: @transaction }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
-      end
+    for transaction in transactions do
+      @transaction = Transaction.new(transaction).save!
     end
+
+    redirect_to transactions_path
+
+    # respond_to do |format|
+    #   if @transaction.save
+    #     format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully created." }
+    #     format.json { render :show, status: :created, location: @transaction }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @transaction.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /transactions/1 or /transactions/1.json
@@ -65,6 +71,6 @@ class TransactionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def transaction_params
-      params.require(:transaction).permit(:transaction_type_id, :date, :value, :card, :hour, :store_id)
+      params.require(:transaction).permit(:transaction_type_id, :date, :value, :card, :hour, :store_id, :transaction_file)
     end
 end
