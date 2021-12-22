@@ -34,7 +34,7 @@ class Transaction < ApplicationRecord
         date: line[1..8].to_date,
         value: BigDecimal(line[9..18]) / 100,
         card: line[30..41],
-        hour: 0, #line[42..47], (TODO: Fix time column)
+        hour: line[42..47].insert(2, ':').insert(5, ':'),
         store_id: store.id
       }
     end
