@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @store %>
+<%= render @store, locals: {transactions: @transactions} %>
 
 <div>
   <%= link_to "Edit this store", edit_store_path(@store) %> |

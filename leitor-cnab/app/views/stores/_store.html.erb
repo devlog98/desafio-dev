@@ -14,4 +14,32 @@
     <%= store.document %>
   </p>
 
+  <% if defined?(@transactions) %>
+    <table>
+      <thead>
+        <th>Tipo</th>
+        <th>Data</th>
+        <th>Hora</th>
+        <th>Valor</th>
+        <th>Cartão</th>
+      </thead>
+      <% if @transactions.any? %>
+        <tbody>
+          <% @transactions.each do |transaction| %>
+            <tr>
+              <td><%= transaction.transaction_type_id %></td>
+              <td><%= transaction.date %></td>
+              <td><%= transaction.hour %></td>
+              <td><%= transaction.value %></td>
+              <td><%= transaction.card %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      <% else %>
+        <tbody>
+          <td colspan="5">Nenhuma transação efetuada com a loja</td>
+        </tbody>
+      <% end %>
+    </table>
+  <% end %>
 </div>
