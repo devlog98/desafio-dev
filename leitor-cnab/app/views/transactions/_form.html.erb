@@ -1,7 +1,7 @@
 <%= form_for transaction, :multipart => true do |form| %>
   <% if transaction.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+    <div style="color: red" class="margin-default">
+      <h2><%= pluralize(transaction.errors.count, "error") %> proibiram a importação de ser efetuada:</h2>
 
       <ul>
         <% transaction.errors.each do |error| %>
@@ -11,12 +11,15 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :transaction_file, style: "display: block" %>
+  <div class="margin-default">
+    <%= form.label :transaction_file, "Arquivo CNAB (.txt)", style: "display: block" %>
     <%= form.file_field :transaction_file %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  </br>
+
+  <div class="margin-default">
+    <%= form.submit "Importar", class: "button-content" %>
+    <%= link_to "Voltar", transactions_path, class: "button-content error" %>
   </div>
 <% end %>

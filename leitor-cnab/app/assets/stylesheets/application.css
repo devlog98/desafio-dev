@@ -15,6 +15,13 @@
  */
 
 /*
+ * Default padding
+*/
+.margin-default {
+    margin-left: 2%;
+}
+
+/*
  * Header navbar
 */
 .navbar-header {
@@ -55,4 +62,50 @@
     margin-top: 30px;
     padding: 0;
     background-color: #d97b2b;
+}
+
+/*
+ * Content table
+*/
+.table-content {
+    width: 100%;
+    padding: 2%;
+    text-align: left;
+}
+
+.table-content-center {
+    text-align: center;
+}
+
+.table-content-head th {
+    background-color: #d97b2b;
+    padding: 10px;
+    border: none;
+}
+
+/*
+ * Buttons
+*/
+.button-content {
+    background-color: #d97b2b;
+    color: #1f1f1f;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13pt;
+    font-weight: bold;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.button-content.error {
+    background-color: #ec0f0f;
+    color: white;
+}
+
+.button-content:hover {
+    background-color: #1f1f1f;
+    color: white;
 }

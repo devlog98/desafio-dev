@@ -1,14 +1,32 @@
-<p style="color: green"><%= notice %></p>
+<p style="color: green" class="margin-default"><%= notice %></p>
 
-<h1>Transactions</h1>
+<h1 class="margin-default">Transações</h1>
 
 <div id="transactions">
-  <% @transactions.each do |transaction| %>
-    <%= render transaction %>
-    <p>
-      <%= link_to "Show this transaction", transaction %>
-    </p>
-  <% end %>
+  <table class="table-content">
+    <thead class="table-content-head">
+      <th>Tipo</th>
+      <th class="table-content-center">Data</th>
+      <th class="table-content-center">Hora</th>
+      <th>Valor</th>
+      <th class="table-content-center">Cartão</th>
+      <th>Loja</th>
+      <th class="table-content-center">Ação</th>
+    </thead>
+    <tbody class="table-content-body">
+      <% @transactions.each do |transaction| %>
+        <tr>
+          <td><%= transaction.transaction_type.name %></td>
+          <td class="table-content-center"><%= transaction.date.strftime("%d/%m/%Y") %></td>
+          <td class="table-content-center"><%= transaction.hour.strftime("%H:%M:%S") %></td>
+          <td><%= number_to_currency(transaction.value, unit: "R$", separator: ",") %></td>
+          <td class="table-content-center"><%= transaction.card %></td>
+          <td><%= transaction.store.name %></td>
+          <td class="table-content-center"><%= button_to "Deletar", transaction, method: :delete, class: "button-content error" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
-<%= link_to "New transaction", new_transaction_path %>
+<%= link_to "Importar transações", new_transaction_path, class: "button-content margin-default" %>

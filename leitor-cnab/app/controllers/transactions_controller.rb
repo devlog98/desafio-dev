@@ -6,10 +6,6 @@ class TransactionsController < ApplicationController
     @transactions = Transaction.all.joins(:transaction_type, :store)
   end
 
-  # GET /transactions/1 or /transactions/1.json
-  def show
-  end
-
   # GET /transactions/new
   def new
     @transaction = Transaction.new
@@ -41,7 +37,7 @@ class TransactionsController < ApplicationController
     @transaction.destroy
 
     respond_to do |format|
-      format.html { redirect_to transactions_url, notice: "Transaction was successfully destroyed." }
+      format.html { redirect_to transactions_url, notice: "Transação deletada com sucesso!" }
       format.json { head :no_content }
     end
   end
