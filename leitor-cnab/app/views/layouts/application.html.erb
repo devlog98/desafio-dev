@@ -13,7 +13,7 @@
   <body>
     <!-- Header -->
     <ul class="navbar-header">
-      <li class="navbar-item"><%= link_to "Transações", transactions_path, class: current_page?(transactions_path) ? "active" : "" %></li>
+      <li class="navbar-item"><%= link_to "Transações", transactions_path, class: (current_page?(transactions_path) || current_page?(root_path)) ? "active" : "" %></li>
       <li class="navbar-item"><%= link_to "Lojas", stores_path, class: current_page?(stores_path) ? "active" : "" %></li>
       <li class="navbar-item"><%= link_to "Tipos de Transação", transaction_types_path, class: current_page?(transaction_types_path) ? "active" : "" %></li>
     </ul>
