@@ -1,16 +1,16 @@
 <div id="<%= dom_id store %>">
   <p>
-    <strong>Name:</strong>
+    <strong>Nome:</strong>
     <%= store.name %>
   </p>
 
   <p>
-    <strong>Owner:</strong>
+    <strong>Dono:</strong>
     <%= store.owner %>
   </p>
 
   <p>
-    <strong>Document:</strong>
+    <strong>Documento:</strong>
     <%= store.document %>
   </p>
 
@@ -24,16 +24,22 @@
         <th>Cartão</th>
       </thead>
       <% if @transactions.any? %>
+        <% balance = 0 %>
         <tbody>
           <% @transactions.each do |transaction| %>
             <tr>
-              <td><%= transaction.transaction_type_id %></td>
-              <td><%= transaction.date %></td>
-              <td><%= transaction.hour %></td>
-              <td><%= transaction.value %></td>
+              <td><%= transaction.transaction_type.name %></td>
+              <td><%= transaction.date.strftime("%d/%m/%Y") %></td>
+              <td><%= transaction.hour.strftime("%H:%M:%S") %></td>
+              <td><%= number_to_currency(transaction.value, unit: "R$", separator: ",") %></td>
               <td><%= transaction.card %></td>
             </tr>
+            <% balance += (transaction.transaction_type.operation) ? transaction.value : -transaction.value %>
           <% end %>
+          <tr>
+            <td>Saldo</td>
+            <td colspan="4"><%= number_to_currency(balance, unit: "R$", separator: ",") %></td>
+          </tr>
         </tbody>
       <% else %>
         <tbody>

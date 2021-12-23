@@ -8,7 +8,7 @@ class StoresController < ApplicationController
 
   # GET /stores/1 or /stores/1.json
   def show
-    @transactions = Transaction.where(store_id: @store.id)
+    @transactions = Transaction.where(store_id: @store.id).joins(:transaction_type)
   end
 
   # GET /stores/new
