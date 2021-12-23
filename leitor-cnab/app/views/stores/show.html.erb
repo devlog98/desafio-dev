@@ -1,10 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
+<h1 class="margin-default"><%= @store.name %></h1>
+
 <%= render @store, locals: {transactions: @transactions} %>
 
-<div>
-  <%= link_to "Edit this store", edit_store_path(@store) %> |
-  <%= link_to "Back to stores", stores_path %>
+<div class="margin-default">
+  <%= link_to "Editar", edit_store_path(@store), class: "button-content" %>
+  <%= button_to "Deletar", @store, method: :delete, class: "button-content error inline" %>  
+</div>
 
-  <%= button_to "Destroy this store", @store, method: :delete %>
+</br>
+
+<div class="margin-default">
+  <%= link_to "Voltar", stores_path, class: "button-content error" %>
 </div>

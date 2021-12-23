@@ -1,10 +1,10 @@
-<h1>Editing store</h1>
+<h1 class="margin-default">Editando "<%= @store.name %>"</h1>
 
 <%= render "form", store: @store %>
 
 <br>
 
-<div>
-  <%= link_to "Show this store", @store %> |
-  <%= link_to "Back to stores", stores_path %>
+<div class="margin-default">
+  <%= link_to "Mostrar", @store, class: "button-content" %>
+  <%= link_to "Voltar", stores_path, class: "button-content error" %>
 </div>

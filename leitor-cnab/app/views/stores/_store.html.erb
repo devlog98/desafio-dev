@@ -1,4 +1,4 @@
-<div id="<%= dom_id store %>">
+<div id="<%= dom_id store %>" class="margin-default">
   <p>
     <strong>Nome:</strong>
     <%= store.name %>
@@ -15,30 +15,34 @@
   </p>
 
   <% if defined?(@transactions) %>
-    <table>
-      <thead>
+    <p>
+      <strong>Transações:</strong>
+    </p>
+
+    <table class="table-content">
+      <thead class="table-content-head">
         <th>Tipo</th>
-        <th>Data</th>
-        <th>Hora</th>
+        <th class="table-content-center">Data</th>
+        <th class="table-content-center">Hora</th>
         <th>Valor</th>
-        <th>Cartão</th>
+        <th class="table-content-center">Cartão</th>
       </thead>
       <% if @transactions.any? %>
         <% balance = 0 %>
-        <tbody>
+        <tbody class="table-content-body">
           <% @transactions.each do |transaction| %>
             <tr>
               <td><%= transaction.transaction_type.name %></td>
-              <td><%= transaction.date.strftime("%d/%m/%Y") %></td>
-              <td><%= transaction.hour.strftime("%H:%M:%S") %></td>
+              <td class="table-content-center"><%= transaction.date.strftime("%d/%m/%Y") %></td>
+              <td class="table-content-center"><%= transaction.hour.strftime("%H:%M:%S") %></td>
               <td><%= number_to_currency(transaction.value, unit: "R$", separator: ",") %></td>
-              <td><%= transaction.card %></td>
+              <td class="table-content-center"><%= transaction.card %></td>
             </tr>
             <% balance += (transaction.transaction_type.operation) ? transaction.value : -transaction.value %>
           <% end %>
           <tr>
-            <td>Saldo</td>
-            <td colspan="4"><%= number_to_currency(balance, unit: "R$", separator: ",") %></td>
+            <td colspan="3">Saldo</td>
+            <td colspan="2"><%= number_to_currency(balance, unit: "R$", separator: ",") %></td>
           </tr>
         </tbody>
       <% else %>

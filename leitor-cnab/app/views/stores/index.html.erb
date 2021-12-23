@@ -1,14 +1,26 @@
-<p style="color: green"><%= notice %></p>
+<p style="color: green" class="margin-default"><%= notice %></p>
 
-<h1>Stores</h1>
+<h1 class="margin-default">Lojas</h1>
 
 <div id="stores">
-  <% @stores.each do |store| %>
-    <%= render store %>
-    <p>
-      <%= link_to "Show this store", store %>
-    </p>
-  <% end %>
+  <table class="table-content">
+    <thead class="table-content-head">
+      <th>Nome</th>
+      <th>Dono</th>
+      <th>Documento</th>
+      <th class="table-content-center">Ação</th>
+    </thead>
+    <tbody class="table-content-body">
+      <% @stores.each do |store| %>
+        <tr>
+          <td><%= store.name %></td>
+          <td><%= store.owner %></td>
+          <td><%= store.document %></td>
+          <td class="table-content-center"><%= link_to "Mostrar", store, class: "button-content" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
-<%= link_to "New store", new_store_path %>
+<%= link_to "Criar loja", new_store_path, class: "button-content margin-default" %>

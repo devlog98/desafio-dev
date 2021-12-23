@@ -1,6 +1,6 @@
 <%= form_with(model: store) do |form| %>
   <% if store.errors.any? %>
-    <div style="color: red">
+    <div style="color: red" class="margin-default">
       <h2><%= pluralize(store.errors.count, "error") %> prohibited this store from being saved:</h2>
 
       <ul>
@@ -11,22 +11,24 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="margin-default">
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
 
-  <div>
+  <div class="margin-default">
     <%= form.label :owner, style: "display: block" %>
     <%= form.text_field :owner %>
   </div>
 
-  <div>
+  <div class="margin-default">
     <%= form.label :document, style: "display: block" %>
     <%= form.text_field :document %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  </br>
+
+  <div class="margin-default">
+    <%= form.submit "Confirmar", class: "button-content" %>
   </div>
 <% end %>
