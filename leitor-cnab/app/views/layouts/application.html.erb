@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LeitorCnab</title>
+    <title>Leitor CNAB</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,19 @@
   </head>
 
   <body>
+    <!-- Header -->
+    <ul class="navbar-header">
+      <li class="navbar-item"><%= link_to "Transações", transactions_path, class: current_page?(transactions_path) ? "active" : "" %></li>
+      <li class="navbar-item"><%= link_to "Lojas", stores_path, class: current_page?(stores_path) ? "active" : "" %></li>
+      <li class="navbar-item"><%= link_to "Tipos de Transação", transaction_types_path, class: current_page?(transaction_types_path) ? "active" : "" %></li>
+    </ul>
+
+    <!-- Content -->
     <%= yield %>
+
+    <!-- Footer -->
+    <ul class="navbar-footer">
+      <li></li>
+    </ul>
   </body>
 </html>
