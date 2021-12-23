@@ -1,32 +1,31 @@
 <div id="<%= dom_id transaction %>">
   <p>
-    <strong>Transaction type:</strong>
-    <%= transaction.transaction_type_id %>
+    <strong>Tipo de transação:</strong>
+    <%= transaction.transaction_type.name %>
   </p>
 
   <p>
-    <strong>Date:</strong>
+    <strong>Data:</strong>
     <%= transaction.date %>
   </p>
 
   <p>
-    <strong>Value:</strong>
-    <%= transaction.value %>
-  </p>
-
-  <p>
-    <strong>Card:</strong>
-    <%= transaction.card %>
-  </p>
-
-  <p>
-    <strong>Hour:</strong>
+    <strong>Hora:</strong>
     <%= transaction.hour %>
   </p>
 
   <p>
-    <strong>Store:</strong>
-    <%= transaction.store_id %>
+    <strong>Valor:</strong>
+    <%= transaction.value %>
   </p>
 
+  <p>
+    <strong>Cartão:</strong>
+    <%= transaction.card %>
+  </p>
+
+  <p>
+    <strong>Loja:</strong>
+    <%= transaction.store.name %>
+  </p>
 </div>
